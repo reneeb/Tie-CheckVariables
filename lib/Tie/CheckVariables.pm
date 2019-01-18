@@ -6,6 +6,7 @@ use strict;
 use warnings;
 
 use Carp;
+use Scalar::Util qw(blessed);
 
 our $VERSION = 0.04;
   
@@ -23,7 +24,11 @@ sub TIESCALAR{
     my $self = {};
     bless $self, $class;
 
-    $self->_type($type);
+    $self->_type(
+        blessed $type && $type->isa('Type::Tiny') ?
+            $type->compiled_check :
+            $type
+    );
 	
     return $self;
 }
@@ -39,7 +44,7 @@ sub STORE {
     my $check = $self->_check();
 
     my $success;
-    my $is_code = grep{ $_ eq ref $check }qw(CODE Type::Tiny);
+    my $is_code = 'CODE' eq ref $check;
 
     if ( !defined $check ) {
         $self->{VALUE} = $value;
