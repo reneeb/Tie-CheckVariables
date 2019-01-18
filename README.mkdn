@@ -1,0 +1,129 @@
+[![Build Status](https://travis-ci.org/reneeb/Tie-CheckVariables.svg?branch=master)](https://travis-ci.org/reneeb/Tie-CheckVariables)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/Tie-CheckVariables.png)](http://cpants.charsbar.org/dist/overview/Tie-CheckVariables)
+[![GitHub issues](https://img.shields.io/github/issues/reneeb/Tie-CheckVariables.svg)](https://github.com/reneeb/Tie-CheckVariables/issues)
+
+# NAME
+
+Tie::CheckVariables - check/validate variables for their datatype
+
+# VERSION
+
+version 0.03
+
+# SYNOPSIS
+
+    use Tie::CheckVariables
+    
+    tie my $scalar,'Tie::CheckVariables','integer';
+    $scalar = 88; # is ok
+    $scalar = 'test'; # is not ok, throws error
+    
+    untie $scalar;
+
+# DATATYPES
+
+You can use these datatypes:
+
+- integer
+- float
+- string
+
+# WHAT TO DO WHEN CHECK FAILS
+
+## on\_error
+
+You can specify a subroutine that is invoked on error:
+
+    use Tie::CheckVariables;
+    
+    Tie::CheckVariables->on_error(sub{print "ERROR!"});
+    
+    tie my $scalar,'Tie::CheckVariables','integer';
+    $scalar = 'a'; # ERROR! is printed
+    untie $scalar;
+
+# USE YOUR OWN DATATYPE
+
+## register
+
+If the built-in datatypes aren't enough, you can extend this module with your own datatypes:
+
+    use Tie::CheckVariables;
+    
+    Tie::CheckVariables->register('url','^http://');
+    tie my $test_url,'Tie::CheckVariables','url';
+    $test_url = 'http://www.perl.org';
+    untie $test_url;
+
+# USING Type::Tiny
+
+Since the very first version of this module, a lot has happened. [Moose](https://metacpan.org/pod/Moose), [Moo](https://metacpan.org/pod/Moo) and other
+very nice modules were developed. And sometimes later [Type::Tiny](https://metacpan.org/pod/Type::Tiny) was written.
+
+So I added support for [Types::Standard](https://metacpan.org/pod/Types::Standard) now ;-)
+
+    use Tie::CheckVariables;
+    use Types::Standard qw(Int);
+    
+    tie my $test_int,'Tie::CheckVariables', Int;
+    $test_int = 112;
+    $test_int = 'Test'; # throws error
+    untie $test_url;
+
+
+
+# Development
+
+The distribution is contained in a Git repository, so simply clone the
+repository
+
+```
+$ git clone git://github.com/reneeb/Tie-CheckVariables.git
+```
+
+and change into the newly-created directory.
+
+```
+$ cd Tie-CheckVariables
+```
+
+The project uses [`Dist::Zilla`](https://metacpan.org/pod/Dist::Zilla) to
+build the distribution, hence this will need to be installed before
+continuing:
+
+```
+$ cpanm Dist::Zilla
+```
+
+To install the required prequisite packages, run the following set of
+commands:
+
+```
+$ dzil authordeps --missing | cpanm
+$ dzil listdeps --author --missing | cpanm
+```
+
+The distribution can be tested like so:
+
+```
+$ dzil test
+```
+
+To run the full set of tests (including author and release-process tests),
+add the `--author` and `--release` options:
+
+```
+$ dzil test --author --release
+```
+
+# AUTHOR
+
+Renee Baecker <reneeb@cpan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2006 by Renee Baecker.
+
+This is free software, licensed under:
+
+    The Artistic License 2.0 (GPL Compatible)
