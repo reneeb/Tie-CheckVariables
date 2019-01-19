@@ -1,6 +1,11 @@
 Revision history for Tie::CheckVariables.
 =========================================
 
+0.05  2019-01-19 13:19:00
+    - improve handling of Type::Tiny
+      - do not check for 'Type::Tiny' in ref check, but use Scalar::Utils blessed
+      - thanks to Toby Inkster
+
 0.04  2019-01-18 13:19:00
     - add support for Type::Tiny
     - dzilized dist

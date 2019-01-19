@@ -8,7 +8,7 @@ use warnings;
 use Carp;
 use Scalar::Util qw(blessed);
 
-our $VERSION = 0.04;
+our $VERSION = 0.05;
   
 my %hash = (
     integer => qr{^[-+]?\d+$},

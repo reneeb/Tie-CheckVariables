@@ -8,7 +8,7 @@ Tie::CheckVariables - check/validate variables for their datatype
 
 # VERSION
 
-version 0.04
+version 0.05
 
 # SYNOPSIS
 
