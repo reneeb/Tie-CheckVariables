@@ -4,11 +4,11 @@
 
 # NAME
 
-Tie::CheckVariables - check/validate variables for their datatype
+Tie::CheckVariables - check/validate variables for their data type
 
 # VERSION
 
-version 0.05
+version 0.06
 
 # SYNOPSIS
 
@@ -20,9 +20,9 @@ version 0.05
     
     untie $scalar;
 
-# DATATYPES
+# DATA TYPES
 
-You can use these datatypes:
+You can use these data types by default:
 
 - integer
 - float
@@ -46,7 +46,7 @@ You can specify a subroutine that is invoked on error:
 
 ## register
 
-If the built-in datatypes aren't enough, you can extend this module with your own datatypes:
+If the built-in data types aren't enough, you can extend this module with your own data types:
 
     use Tie::CheckVariables;
     
