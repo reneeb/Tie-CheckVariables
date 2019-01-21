@@ -120,7 +120,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  use Tie::CheckVariables
+  use Tie::CheckVariables;
   
   tie my $scalar,'Tie::CheckVariables','integer';
   $scalar = 88; # is ok
