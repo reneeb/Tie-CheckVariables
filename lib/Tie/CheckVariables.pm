@@ -156,7 +156,7 @@ You can specify a subroutine that is invoked on error:
   $scalar = 'a'; # ERROR! is printed
   untie $scalar;
 
-=head1 USE YOUR OWN DATATYPE
+=head1 USE YOUR OWN DATA TYPE
 
 =head2 register
 
