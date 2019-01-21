@@ -1,6 +1,6 @@
 package Tie::CheckVariables;
 
-# ABSTRACT: check/validate variables for their datatype
+# ABSTRACT: check/validate variables for their data type
 
 use strict;
 use warnings;
@@ -128,9 +128,9 @@ __END__
   
   untie $scalar;
 
-=head1 DATATYPES
+=head1 DATA TYPES
 
-You can use these datatypes:
+You can use these data types by default:
 
 =over 5
 
@@ -160,7 +160,7 @@ You can specify a subroutine that is invoked on error:
 
 =head2 register
 
-If the built-in datatypes aren't enough, you can extend this module with your own datatypes:
+If the built-in data types aren't enough, you can extend this module with your own data types:
 
   use Tie::CheckVariables;
   
